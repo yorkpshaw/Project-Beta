@@ -26,6 +26,8 @@ class SalesRecordListEncoder(ModelEncoder):
     properties = ["price", "automobile", "salesperson", "customer"]
     encoders = {
         "automobile": AutomobileVOEncoder(),
+        "salesperson": SalesPersonDetailEncoder(),
+        "customer": CustomerDetailEncoder(),
     }
 
 class SalesRecordDetailEncoder(ModelEncoder):
@@ -33,4 +35,6 @@ class SalesRecordDetailEncoder(ModelEncoder):
     properties = ["price", "automobile", "salesperson", "customer"]
     encoders = {
         "automobile": AutomobileVOEncoder(),
+        "salesperson": SalesPersonDetailEncoder(),
+        "customer": CustomerDetailEncoder(),
     }

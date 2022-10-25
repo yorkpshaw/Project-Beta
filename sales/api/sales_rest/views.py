@@ -15,9 +15,9 @@ from .encoders import (
 from .models import AutomobileVO, SalesRecord, SalesPerson, Customer
 
 def api_automobile(request):
-    automobile = AutomobileVO.objects.all()
+    automobiles = AutomobileVO.objects.all()
     return JsonResponse(
-        {"automobile": automobile},
+        {"automobiles": automobiles},
         encoder=AutomobileVOEncoder
     )
 
@@ -84,6 +84,30 @@ def api_list_sales(request):
         )
     else:
         content = json.loads(request.body)
+        try:
+            automobile = AutomobileVO.objects.get(vin=content["automobile"])
+            content["automobile"] = automobile
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "Automobile does not exist"},
+                status=400,
+            )
+        try:
+            salesperson = SalesPerson.objects.get(salesperson_name=content["salesperson"])
+            content["salesperson"] = salesperson
+        except SalesPerson.DoesNotExist:
+            return JsonResponse(
+                {"message": "Salesperson does not exist"},
+                status=400,
+            )
+        try:
+            customer = Customer.objects.get(customer_name=content["customer"])
+            content["customer"] = customer
+        except Customer.DoesNotExist:
+            return JsonResponse(
+                {"message": "Customer does not exist"},
+                status=400,
+            )
         salesrecord = SalesRecord.objects.create(**content)
         return JsonResponse(
             salesrecord,
