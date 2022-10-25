@@ -7,23 +7,23 @@ class AutomobileVOEncoder(ModelEncoder):
 
 class SalesPersonListEncoder(ModelEncoder):
     model = SalesPerson
-    properties = ["employee_num", "salesperson_name"]
+    properties = ["employee_num", "salesperson_name", "id"]
 
 class SalesPersonDetailEncoder(ModelEncoder):
     model = SalesPerson
-    properties = ["employee_num", "salesperson_name"]
+    properties = ["employee_num", "salesperson_name", "id"]
 
 class CustomerListEncoder(ModelEncoder):
     model = Customer
-    properties = ["customer_name", "address", "phone_number"]
+    properties = ["customer_name", "address", "phone_number", "id"]
 
 class CustomerDetailEncoder(ModelEncoder):
     model = Customer
-    properties = ["customer_name", "address", "phone_number"]
+    properties = ["customer_name", "address", "phone_number", "id"]
 
 class SalesRecordListEncoder(ModelEncoder):
     model = SalesRecord
-    properties = ["price", "automobile", "salesperson", "customer"]
+    properties = ["price", "automobile", "salesperson", "customer", "id"]
     encoders = {
         "automobile": AutomobileVOEncoder(),
         "salesperson": SalesPersonDetailEncoder(),
@@ -32,7 +32,7 @@ class SalesRecordListEncoder(ModelEncoder):
 
 class SalesRecordDetailEncoder(ModelEncoder):
     model = SalesRecord
-    properties = ["price", "automobile", "salesperson", "customer"]
+    properties = ["price", "automobile", "salesperson", "customer", "id"]
     encoders = {
         "automobile": AutomobileVOEncoder(),
         "salesperson": SalesPersonDetailEncoder(),

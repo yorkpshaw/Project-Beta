@@ -30,14 +30,39 @@ def api_list_customers(request):
             encoder=CustomerListEncoder
         )
     else:
-        content = json.loads(request.body)
-        customer = Customer.objects.create(**content)
-        return JsonResponse(
-            customer,
-            encoder=CustomerDetailEncoder,
-            safe=False
-        )
+        try:
+            content = json.loads(request.body)
+            customer = Customer.objects.create(**content)
+            return JsonResponse(
+                customer,
+                encoder=CustomerListEncoder,
+                safe=False
+            )
+        except:
+            return JsonResponse(
+                {"message": "Phone number already exists"},
+                status=400,
+            )
 
+@require_http_methods(["GET", "DELETE"])
+def api_show_customer(request, pk):
+    if request.method == "GET":
+        try:
+            customer = Customer.objects.get(id=pk)
+            return JsonResponse(
+                customer,
+                encoder=CustomerDetailEncoder,
+                safe=False
+            )
+        except Customer.DoesNotExist:
+            return JsonResponse({"message": "Customer does not exist"})
+    else:
+        try:
+            customer = Customer.objects.get(id=pk)
+            customer.delete()
+            return JsonResponse({"message": "Customer has been deleted."})
+        except Customer.DoesNotExist:
+            return JsonResponse({"message": "Customer does not exist"})
 
 @require_http_methods(["GET", "POST"])
 def api_list_salespeople(request):
@@ -48,23 +73,33 @@ def api_list_salespeople(request):
             encoder=SalesPersonListEncoder
         )
     else:
-        content = json.loads(request.body)
-        salesperson = SalesPerson.objects.create(**content)
-        return JsonResponse(
-            salesperson,
-            encoder=SalesPersonDetailEncoder,
-            safe=False
-        )
+        try:
+            content = json.loads(request.body)
+            salesperson = SalesPerson.objects.create(**content)
+            return JsonResponse(
+                salesperson,
+                encoder=SalesPersonDetailEncoder,
+                safe=False
+            )
+        except:
+            return JsonResponse(
+                {"message": "Employee number already exists"},
+                status=400,
+            )
 
 @require_http_methods(["GET", "DELETE"])
 def api_show_salesperson(request, pk):
     if request.method == "GET":
-        salesperson = SalesPerson.objects.get(id=pk)
-        return JsonResponse(
-            salesperson,
-            encoder=SalesPersonDetailEncoder,
-            safe=False
-        )
+        try:
+            salesperson = SalesPerson.objects.get(id=pk)
+            return JsonResponse(
+                salesperson,
+                encoder=SalesPersonDetailEncoder,
+                safe=False
+            )
+        except SalesPerson.DoesNotExist:
+            return JsonResponse({"message": "Salesperson does not exist"})
+
     else:
         try:
             salesperson = SalesPerson.objects.get(id=pk)
