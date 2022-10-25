@@ -99,7 +99,6 @@ def api_show_salesperson(request, pk):
             )
         except SalesPerson.DoesNotExist:
             return JsonResponse({"message": "Salesperson does not exist"})
-
     else:
         try:
             salesperson = SalesPerson.objects.get(id=pk)
