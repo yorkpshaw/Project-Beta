@@ -18,9 +18,6 @@ class NewCustomerForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.customer_name
-        delete data.address
-        delete data.phone_number
         delete data.hasSignedUp;
 
         const locationUrl = 'http://localhost:8090/api/customers/';
@@ -60,16 +57,6 @@ class NewCustomerForm extends React.Component {
         const value = event.target.value;
         this.setState({ phone_number: value })
     }
-
-    // async componentDidMount() {
-    //     const url = 'http://inventory-api:8100/api/automobiles/';
-    //     const response = await fetch(url);
-
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         this.setState({ automobiles: data.automobiles });
-    //     }
-    // }
 
     render() {
             let messageClasses = 'alert alert-success d-none mb-0';

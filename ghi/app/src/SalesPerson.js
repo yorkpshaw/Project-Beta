@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import "./index.css"
 
-class SalesPersonHistory extends React.Component {
+class SalesPerson extends React.Component {
   constructor(props) {
       super(props)
       this.state = {
-        salesrecords: [],
+        salespeople: [],
       input: '',
       filterSalesPerson: [],
       hasSignedUp: false,
@@ -15,18 +15,21 @@ class SalesPersonHistory extends React.Component {
     }
 async componentDidMount() {
 
-  const salesUrl = 'http://localhost:8090/api/salesrecords/';
+  const salesUrl = 'http://localhost:8090/api/salespeople/';
     const salesResponse = await fetch(salesUrl);
 
     if (salesResponse.ok) {
         const data = await salesResponse.json();
-        this.setState({ salesrecords: data.salesrecords });
+        this.setState({ salespeople: data.salespeople });
         console.log(data.salesrecords)
     }
 }
 
 async handleSubmit(event) {
   event.preventDefault();
+  const value = event.target.value;
+  this.setState({ input: value})
+
   const salespersonUrl = 'http://localhost:8090/api/salesrecords/';
   const responses = await fetch(salespersonUrl);
 
@@ -34,7 +37,7 @@ async handleSubmit(event) {
     const data = await responses.json();
     let records = [];
     for (let response of data.salesrecords) {
-      if (response.salesperson.employee_num === this.state.input) {
+      if (response.salesperson.salesperson_name === this.state.input) {
         records.push(response)
       }
     this.setState({ filterSalesPerson: records, hasSignedUp: true });
@@ -42,6 +45,7 @@ async handleSubmit(event) {
 }
 }
 }
+
 handleInput(event) {
   const value = event.target.value;
   this.setState({ input: value})
@@ -55,12 +59,12 @@ handleInput(event) {
       <div className="container">
         <h1>Sales person History</h1>
         <div className="mb-3">
-          <select onChange={this.handleSubmit} required name="salesperson" id="salesperson" className="form-select">
+          <select value={this.state.input} onChange={this.handleSubmit} required name="salesperson" id="salesperson" className="form-select">
               <option value="">Choose a sales person</option>
-              {this.state.salesrecords.map(salesrecord => {
+              {this.state.salespeople.map(salesperson => {
               return (
-                  <option key={salesrecord.salesperson.employee_num} value={salesrecord.salesperson.employee_num}>
-                      {salesrecord.salesperson.salesperson_name}
+                  <option key={salesperson.id} value={salesperson.salesperson_name}>
+                      {salesperson.salesperson_name}
                   </option>
               );
               })}
@@ -95,4 +99,4 @@ handleInput(event) {
 }
 }
 
-export default SalesPersonHistory;
+export default SalesPerson;

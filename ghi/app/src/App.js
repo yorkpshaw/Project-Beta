@@ -6,7 +6,8 @@ import Nav from './Nav';
 // import SalesPersonHistory from './SalesPersonHistory';
 // import NewCustomerForm from './NewCustomerForm';
 // import SaleRecordForm from './SaleRecordForm';
-import NewSalesPersonForm from './NewSalesPersonForm';
+// import NewSalesPersonForm from './NewSalesPersonForm';
+import SalesPerson from './SalesPerson';
 
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
         </Routes>
         {/* <SaleRecordForm /> */}
         {/* <NewCustomerForm /> */}
-        <NewSalesPersonForm />
+        {/* <NewSalesPersonForm /> */}
         {/* <SalesList /> */}
         {/* <SalesPersonHistory /> */}
+        <SalesPerson />
       </div>
     </BrowserRouter>
   );

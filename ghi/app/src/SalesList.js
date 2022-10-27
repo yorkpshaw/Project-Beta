@@ -1,14 +1,25 @@
 import React, {useState, useEffect} from 'react'
 import "./index.css"
 
-function SalesTable(props) {
+class SalesTable extends React.Component {
+  constructor(props) {
+      super(props)
+      this.state = {
+        salesrecords: [],
+      };
+    }
+async componentDidMount() {
 
-  const [name, setName] = useState("");
+  const salesUrl = 'http://localhost:8090/api/salesrecords/';
+    const salesResponse = await fetch(salesUrl);
 
-  const fetchData = () => {
-    return fetch("http://localhost:8090/api/salesrecords/")
-          .then((response) => response.json())
-          .then((data) => console.log(data));}
+    if (salesResponse.ok) {
+        const data = await salesResponse.json();
+        this.setState({ salesrecords: data.salesrecords });
+        console.log(data.salesrecords)
+    }
+}
+    render(){
 
     return (
       <div>
@@ -24,16 +35,21 @@ function SalesTable(props) {
           </tr>
         </thead>
         <tbody>
-          {/* some mapping shit */}
-  {/* <td>{employee_name}</td>
-  <td>{employee_num}</td>
-  <td>{customer_name}</td>
-  <td>{vin}</td>
-  <td>{price}</td>  */}
+{this.state.salesrecords.map(salesrecord => {
+  return (
+    <tr key={salesrecord.id}>
+  <td>{salesrecord.salesperson.salesperson_name}</td>
+  <td>{salesrecord.salesperson.employee_num}</td>
+  <td>{salesrecord.customer.customer_name}</td>
+  <td>{salesrecord.automobile.vin}</td>
+  <td>{salesrecord.price}</td>
+  </tr>
+  )
+})}
         </tbody>
       </table>
       </div>
     )
-  }
-
+}
+}
 export default SalesTable;
