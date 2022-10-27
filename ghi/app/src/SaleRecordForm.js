@@ -113,14 +113,6 @@ class SaleRecordForm extends React.Component {
             const data = await customerResponse.json();
             this.setState({ customers: data.customers });
     }
-        // const salesrecordsUrl = 'http://localhost:8090/api/salesrecords/';
-        // const salesrecordsResponse = await fetch(salesrecordsUrl)
-
-        // if (salesrecordsResponse.ok) {
-        //     const data = await salesrecordsResponse.json();
-        //     this.setState({ salesrecords: data.salesrecords })
-        // }
-
     }
 
     render() {
