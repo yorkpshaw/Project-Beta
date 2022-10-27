@@ -12,6 +12,7 @@ from sales_rest.models import AutomobileVO
 
 # Import models from sales_rest, here.
 # from sales_rest.models import Something
+#Testingforgit
 
 def get_autos():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
