@@ -91,9 +91,10 @@ class SaleRecordForm extends React.Component {
     async componentDidMount() {
         const autoUrl = 'http://localhost:8100/api/automobiles/';
         const autoResponse = await fetch(autoUrl);
-
         if (autoResponse.ok) {
             const data = await autoResponse.json();
+            console.log(data)
+
             this.setState({ autos: data.autos });
         }
 

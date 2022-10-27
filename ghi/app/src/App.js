@@ -12,9 +12,9 @@ import CreateAuto from './AddAuto';
 // import SalesList from './SalesList';
 // import SalesPersonHistory from './SalesPersonHistory';
 // import NewCustomerForm from './NewCustomerForm';
-import SaleRecordForm from './SaleRecordForm';
+// import SaleRecordForm from './SaleRecordForm';
 // import NewSalesPersonForm from './NewSalesPersonForm';
-// import SalesPerson from './SalesPerson';
+import SalesPerson from './SalesPerson';
 // import CreateManufacturer from './CreateManufacturers';
 // import ListManufacturers from './ListManufacturers';
 // import ListVehicleModels from './ListVehicleModels';
@@ -40,7 +40,7 @@ function App() {
             <Route index element={<TechnicianForm />} />
           </Route>
         </Routes>
-        <SaleRecordForm />
+        {/* <SaleRecordForm /> */}
         {/* <NewCustomerForm /> */}
         {/* <NewSalesPersonForm /> */}
         {/* <SalesList /> */}
