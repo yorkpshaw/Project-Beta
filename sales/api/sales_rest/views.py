@@ -127,7 +127,7 @@ def api_list_sales(request):
                 status=400,
             )
         try:
-            salesperson = SalesPerson.objects.get(salesperson_name=content["salesperson"])
+            salesperson = SalesPerson.objects.get(id=content["salesperson"])
             content["salesperson"] = salesperson
         except SalesPerson.DoesNotExist:
             return JsonResponse(
@@ -135,7 +135,7 @@ def api_list_sales(request):
                 status=400,
             )
         try:
-            customer = Customer.objects.get(customer_name=content["customer"])
+            customer = Customer.objects.get(id=content["customer"])
             content["customer"] = customer
         except Customer.DoesNotExist:
             return JsonResponse(

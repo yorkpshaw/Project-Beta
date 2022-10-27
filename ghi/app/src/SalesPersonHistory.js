@@ -21,7 +21,6 @@ async componentDidMount() {
     if (salesResponse.ok) {
         const data = await salesResponse.json();
         this.setState({ salesrecords: data.salesrecords });
-        console.log(data.salesrecords)
     }
 }
 
@@ -38,7 +37,6 @@ async handleSubmit(event) {
         records.push(response)
       }
     this.setState({ filterSalesPerson: records, hasSignedUp: true });
-    console.log(records)
 }
 }
 }

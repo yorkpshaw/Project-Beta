@@ -5,10 +5,12 @@ import Nav from './Nav';
 // import SalesList from './SalesList';
 // import SalesPersonHistory from './SalesPersonHistory';
 // import NewCustomerForm from './NewCustomerForm';
-// import SaleRecordForm from './SaleRecordForm';
+import SaleRecordForm from './SaleRecordForm';
 // import NewSalesPersonForm from './NewSalesPersonForm';
-import SalesPerson from './SalesPerson';
-
+// import SalesPerson from './SalesPerson';
+// import CreateManufacturer from './CreateManufacturers';
+// import ListManufacturers from './ListManufacturers';
+// import ListVehicleModels from './ListVehicleModels';
 
 function App() {
   return (
@@ -18,12 +20,15 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
         </Routes>
-        {/* <SaleRecordForm /> */}
+        <SaleRecordForm />
         {/* <NewCustomerForm /> */}
         {/* <NewSalesPersonForm /> */}
         {/* <SalesList /> */}
         {/* <SalesPersonHistory /> */}
-        <SalesPerson />
+        {/* <SalesPerson /> */}
+        {/* <CreateManufacturer /> */}
+        {/* <ListManufacturers /> */}
+        {/* <ListVehicleModels /> */}
       </div>
     </BrowserRouter>
   );

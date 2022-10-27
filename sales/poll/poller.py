@@ -22,7 +22,7 @@ def get_autos():
             import_href=auto["href"],
             defaults={
                 "vin": auto["vin"],
-                # "sold": auto["sold"],
+                "sold": auto["sold"],
             },
         )
 

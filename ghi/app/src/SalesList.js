@@ -16,7 +16,6 @@ async componentDidMount() {
     if (salesResponse.ok) {
         const data = await salesResponse.json();
         this.setState({ salesrecords: data.salesrecords });
-        console.log(data.salesrecords)
     }
 }
     render(){

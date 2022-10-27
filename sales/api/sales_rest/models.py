@@ -26,7 +26,7 @@ class Customer(models.Model):
 
 class SalesRecord(models.Model):
     price = models.FloatField()
-    automobile = models.OneToOneField(
+    automobile = models.ForeignKey(
         AutomobileVO,
         related_name="salesrecords",
         on_delete = models.PROTECT
