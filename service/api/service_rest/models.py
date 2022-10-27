@@ -25,9 +25,11 @@ class AutomobileVO(models.Model):
 
 class Appointment(models.Model):
     owner = models.CharField(max_length=50)
-    date = models.DateTimeField(editable=True)
+    date = models.CharField(max_length=10, null=True)
+    time = models.CharField(max_length=10, null=True)
     reason = models.CharField(max_length=100)
-    vin_customer = models.CharField(max_length=17, unique=True)
+    vin_customer = models.CharField(max_length=17)
+    status = models.BooleanField(default=False)
 
     technician = models.ForeignKey(
         Technician,

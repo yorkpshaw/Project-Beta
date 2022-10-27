@@ -16,25 +16,29 @@ from .encoders import (
 def api_list_appointments(request):
     '''
     Lists the appointments and the details of
-    the apointment, including VIN, customer name, date and time
-     of the appointment, the assigned technician's name,
-     and the reason for the service.
+    the appointment, including customer name, VIN, date and time
+    of the appointment, the assigned technician's name, reason for
+    the service, status of the appointment, and customer's vip status.
 
     Returns a dictionary with a single key "appointments" which
-    is a list of appointments and VIN, customer name, date and time
-     of the appointment, the assigned technician's name,
-     and the reason for the service
+    is a list of appointments which includes customer name, VIN,
+    date and time of the appointment, the assigned technician's name,
+    reason for the service, status of the appointment, and customer's vip status.
 
     {
         "appointments": [
             {
-            "date": date and time of the appointment,
-            "owner": owner of the vehicle,
-            "technician": {
-                "name": name of assigned technician
-            }
-            "vin": {
-                "vin": vin number of the vehicle
+                "owner": owner of the vehicle,
+                "vin_customer": VIN number of the vehicle,
+                "date": date of the appointment,
+                "time": time of the appointment,
+                "technician": {
+                    "name": name of assigned technician,
+                    "employee_number": employee number of the technician,
+                }
+                "reason": reason for the service appointment,
+                "status": if false, appointment is still pending and if true, appointment has been finished
+                "vip": if true, owner bought vehicle from carcar dealership
             }
         ]
     }
@@ -72,9 +76,10 @@ def api_show_appointment(request, pk):
     Returns the details of the appointment model specified by the
     pk parameter.
 
-    Should return a dictionary with the date and time of the
-    appointment, owner of vehicle, assigned technician,
-    vin of vehicle and reason for the appointment
+    Returns a dictionary with a single key "appointments" which
+    is a list of appointments which includes customer name, VIN,
+    date and time of the appointment, the assigned technician's name,
+    reason for the service, status of the appointment, and customer's vip status.
     '''
     if request.method == "GET":
         appointment = Appointment.objects.get(id=pk)
@@ -101,7 +106,7 @@ def api_show_appointment(request, pk):
             content = json.loads(request.body)
             appointment = Appointment.objects.get(id=pk)
 
-            props = ["date", "reason"]
+            props = ["date", "reason", "status", "time"]
             for prop in props:
                 if prop in content:
                     setattr(appointment, prop, content[prop])
@@ -119,12 +124,12 @@ def api_show_appointment(request, pk):
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):
     '''
-    Lists the name of technicians and their employee ID
+    Lists the name of the service technicians and their employee ID
 
     Returns a dictionary with a single key "technicians"
-    which is a list of technician names and their employee number.
+    which is a list of service technician names and their employee number.
     Each entry in the list is a dictionary that contains
-    the name of the technician and their employee number.
+    the name of the service technician and their employee number.
 
     {
         "technicians": [
@@ -155,12 +160,13 @@ def api_list_technicians(request):
 @require_http_methods(["GET"])
 def api_list_automobileVO(request):
     '''
-     Lists the vin of the automobile
+    Lists the vin, manufacturer, make, model, color, year,
+    and vip status of an automobile.
 
     Returns a dictionary with a single key "automobiles"
-    which is a list of automobile VINs. Each entry in '
-    the list is a dictionary that contains the
-    automobile VIN
+    which is a list of automobile VINs, manufacturers, makes,
+    models, colors, years, and vip status of automobiles
+    from the inventory.
 
     {
         "automobiles": [
