@@ -27,7 +27,6 @@ class SaleRecordForm extends React.Component {
         delete data.customers;
         delete data.salespeople;
         delete data.hasSignedUp;
-        console.log(data)
 
         const vin = this.state.automobile;
         const updateUrl = `http://localhost:8100/api/automobiles/${vin}/`;
@@ -132,7 +131,7 @@ class SaleRecordForm extends React.Component {
                 <div className="mb-3">
                     <select value={this.state.automobile} onChange={this.handleAutomobileChange} required name="automobile" id="automobile" className="form-select">
                         <option value="">Choose an automobile</option>
-                        {this.state.autos.map(auto => {
+                        {this.state.autos.filter(function(auto) { return auto.sold === false; }).map(auto => {
                             return (
                                 <option key={auto.vin} value={auto.vin}>
                                     {auto.vin}
@@ -182,4 +181,3 @@ class SaleRecordForm extends React.Component {
 }
 
 export default SaleRecordForm;
-// IS THIS WORKING
