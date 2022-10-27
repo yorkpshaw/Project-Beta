@@ -2,96 +2,57 @@ import React from 'react';
 
 
 class AppointmentForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
+        userInput: {
             owner: '',
             date: '',
             time: '',
             technician: '',
             vin_customer: '',
             reason: '',
-            technicians: [],
-            hasSubmit: false,
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeOwner = this.handleChangeOwner.bind(this);
-        this.handleChangeDate = this.handleChangeDate.bind(this);
-        this.handleChangeTime = this.handleChangeTime.bind(this);
-        this.handleChangeTechnician = this.handleChangeTechnician.bind(this);
-        this.handleChangeVin = this.handleChangeVin.bind(this);
-        this.handleChangeReason = this.handleChangeReason.bind(this);
+        },
+        technicians: [],
+        hasSubmit: false,
     }
 
-
-    async componentDidMount() {
-        const url = `http://localhost:8080/api/technicians/`;
-        const response = await fetch(url);
+    componentDidMount = async () => {
+        const technicianURL = `http://localhost:8080/api/technicians/`;
+        const response = await fetch(technicianURL);
         if (response.ok) {
             const data = await response.json();
-            this.setState({ technicians: data.technicians });
+            this.setState({ technicians: data.technicians })
         }
     }
 
+    handleChange = (e) => {
+        const value = e.target.value;
+        const key = e.target.name;
+        this.setState({
+            userInput: {...this.state.userInput,
+            [key]: value}
+        })
+    }
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        const data = {...this.state}
-        delete data.technicians;
-        delete data.hasSubmit;
+    handleSubmit = async (e) => {
+        e.preventDefault();
 
         const appointmentURL = `http://localhost:8080/api/appointments/`;
         const fetchOptions = {
             method: 'post',
-            body: JSON.stringify(data),
+            body: JSON.stringify(this.state.userInput),
             headers: {
                 'Content-Type': 'application/json'
             },
         };
 
-        const appointmentResponse = await fetch(appointmentURL, fetchOptions);
-        if (appointmentResponse.ok) {
+        const response = await fetch(appointmentURL, fetchOptions)
+        if (response.ok) {
             this.setState({
-                owner: '',
-                date: '',
-                technician: '',
-                vin_customer: '',
-                reason: '',
+                userInput: {},
+                technicians: [],
                 hasSubmit: true,
-        });
+            })
         }
-    }
-
-
-    handleChangeOwner(event) {
-        const value = event.target.value;
-        this.setState({ owner: value })
-    }
-
-    handleChangeDate(event) {
-        const value = event.target.value;
-        this.setState({ date: value })
-    }
-
-    handleChangeTime(event) {
-        const value = event.target.value;
-        this.setState({ time: value })
-    }
-
-    handleChangeTechnician(event) {
-        const value = event.target.value;
-        this.setState({ technician: value })
-    }
-
-    handleChangeVin(event) {
-        const value = event.target.value;
-        this.setState({ vin_customer: value })
-    }
-
-    handleChangeReason(event) {
-        const value = event.target.value;
-        this.setState({ reason: value })
     }
 
     render () {
@@ -109,23 +70,23 @@ class AppointmentForm extends React.Component {
                         <h1>Make an appointment</h1>
                         <form className={formClasses} onSubmit={this.handleSubmit} id="create-appointment-form">
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangeOwner} placeholder="Name" required type="text" name="owner" id="owner" className="form-control" />
+                                <input onChange={this.handleChange} placeholder="Name" required type="text" name="owner" id="owner" className="form-control" />
                                 <label htmlFor="owner">Your Name</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangeVin} placeholder="VIN" required type="text" name="vin_customer" id="vin_customer" className="form-control" />
+                                <input onChange={this.handleChange} placeholder="VIN" required type="text" name="vin_customer" id="vin_customer" className="form-control" />
                                 <label htmlFor="vin_customer">Car VIN</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangeDate} placeholder="Date" required type="date" name="date" id="date" className="form-control" />
+                                <input onChange={this.handleChange} placeholder="Date" required type="date" name="date" id="date" className="form-control" />
                                 <label htmlFor="date">Choose a date</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangeTime} placeholder="Time" required type="time" name="time" id="time" className="form-control" />
+                                <input onChange={this.handleChange} placeholder="Time" required type="time" name="time" id="time" className="form-control" />
                                 <label htmlFor="time">Choose a time</label>
                             </div>
                             <div className="mb-3">
-                                <select onChange={this.handleChangeTechnician} required name="technician" id="technician" className="form-select">
+                                <select onChange={this.handleChange} required name="technician" id="technician" className="form-select">
                                     <option value="">Choose a technician</option>
                                     {this.state.technicians.map(technician => {
                                         return (
@@ -136,7 +97,7 @@ class AppointmentForm extends React.Component {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="reason">Reason for visit</label>
-                                <textarea onChange={this.handleChangeReason} className="form-control" name="reason" id="reason" rows="2"></textarea>
+                                <textarea onChange={this.handleChange} className="form-control" name="reason" id="reason" rows="2"></textarea>
                             </div>
                             <button className="btn btn-success">Make an appointment</button>
                         </form>

@@ -1,52 +1,42 @@
 import React from 'react';
 
 class TechnicianForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
+        userInput: {
             name: '',
             employee_number: '',
-            hasSubmit: false,
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeName = this.handleChangeName.bind(this);
-        this.handleChangeEmployeeNum = this.handleChangeEmployeeNum.bind(this);
+        },
+        hasSubmit: false,
     }
 
+    handleChange = (e) => {
+        const value = e.target.value;
+        const key = e.target.name;
+        this.setState({
+            userInput: {...this.state.userInput,
+            [key]: value},
+        })
+    }
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        const data = {...this.state}
-        delete data.hasSubmit;
+    handleSubmit = async (e) => {
+        e.preventDefault();
 
         const technicianURL = `http://localhost:8080/api/technicians/`;
         const fetchOptions = {
             method: 'post',
-            body: JSON.stringify(data),
+            body: JSON.stringify(this.state.userInput),
             headers: {
                 'Content-Type': 'application/json',
             },
         };
 
-        const techResponse = await fetch(technicianURL, fetchOptions);
-        if (techResponse.ok) {
+        const response = await fetch(technicianURL, fetchOptions);
+        if (response.ok) {
             this.setState({
-                name: '',
-                employee_number: '',
+                userInput: {},
                 hasSubmit: true,
             })
         }
-    }
-
-    handleChangeName(event) {
-        const value = event.target.value;
-        this.setState({ name: value })
-    }
-
-    handleChangeEmployeeNum(event) {
-        const value = event.target.value;
-        this.setState({ employee_number: value })
     }
 
     render () {
@@ -65,11 +55,11 @@ class TechnicianForm extends React.Component {
                         <h1>Add a new technician</h1>
                         <form className = {formClasses} onSubmit={this.handleSubmit} id="create-technician-form">
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangeName} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
+                                <input onChange={this.handleChange} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
                                 <label htmlFor="name">Name</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChangeEmployeeNum} placeholder="Employee Number" required-type="number" name="employee_number" id="employee_number" className="form-control" />
+                                <input onChange={this.handleChange} placeholder="Employee Number" required-type="number" name="employee_number" id="employee_number" className="form-control" />
                                 <label htmlFor="employee_number">Employee Number</label>
                             </div>
                             <button className="btn btn-success">Add a new employee</button>

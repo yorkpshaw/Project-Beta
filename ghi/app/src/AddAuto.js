@@ -17,7 +17,6 @@ class CreateAuto extends React.Component {
         const response = await fetch(modelURL);
         if (response.ok) {
             const data = await response.json();
-            console.log(data)
             this.setState({ models: data.models })
         }
     }

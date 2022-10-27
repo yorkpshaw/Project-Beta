@@ -3,50 +3,55 @@ import "./index.css"
 
 
 class AppointmentList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            updated: false,
-            appointment: '',
-            appointments: [],
-        };
-
-
-        this.handleUpdate = this.handleUpdate.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+    state = {
+        updated: false,
+        appointments: [],
     }
 
-    async componentDidMount() {
-        const url = 'http://localhost:8080/api/appointments/';
-        try {
-            const response = await fetch(url);
-            if (response.ok) {
-                let data = await response.json();
-
-
-                this.setState({
-                    appointments: data.appointments,
-                    updated: false,
-                })
-            }
-
-        } catch (e) {
-            console.error(e)
+    componentDidMount = async () => {
+        const appointmentURL = `http://localhost:8080/api/appointments/`;
+        const response = await fetch(appointmentURL);
+        if (response.ok) {
+            const data = await response.json();
+            this.setState({
+                appointments: data.appointments,
+                updated: false,
+            })
         }
     }
 
-    async handleUpdate(event) {
-        event.preventDefault();
-        const data = {...this.state}
-        const id = event.target.value
-        delete data.appointments;
+    handleUpdate = async (e) => {
+        e.preventDefault();
+        const id = e.target.value;
 
-        const appointmentURL = `http://localhost:8080/api/appointments/${id}/`;
+        const appointmentURL = `http://localhost:8080/api/appointments/${id}/`
         const fetchOptions = {
             method: 'put',
             body: JSON.stringify({ status: true }),
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        };
+
+        const response = await fetch(appointmentURL, fetchOptions);
+        if (response.ok)  {
+            this.setState({
+                updated: true,
+                appointments: [],
+            })
+            this.componentDidMount();
+        }
+    }
+
+    handleDelete = async (e) => {
+        e.preventDefault();
+        const id = e.target.value;
+
+        const appointmentURL = `http://localhost:8080/api/appointments/${id}/`;
+        const fetchOptions = {
+            method: 'delete',
+            headers: {
+                'Content-Type': 'application/json'
             },
         };
 
@@ -54,35 +59,38 @@ class AppointmentList extends React.Component {
         if (response.ok) {
             this.setState({
                 updated: true,
-                appointment: '',
+                appointments: [],
             })
+            this.componentDidMount();
         }
+
+
     }
 
-    async handleDelete(event) {
-        event.preventDefault();
-        const data = {...this.state}
-        const id = event.target.value;
-        delete data.appointments;
+    // async handleDelete(event) {
+    //     event.preventDefault();
+    //     const data = {...this.state}
+    //     const id = event.target.value;
+    //     delete data.appointments;
 
-        const appointmentURL = `http://localhost:8080/api/appointments/${id}/`;
-        const fetchOptions = {
-            method: 'delete',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-        const response = await fetch(appointmentURL, fetchOptions);
-        if (response.ok) {
-        this.setState({
-            appointment: '',
-            status: '',
-            deleted: true,
-            updated: '',
-        });
-    }
-    }
+    //     const appointmentURL = `http://localhost:8080/api/appointments/${id}/`;
+    //     const fetchOptions = {
+    //         method: 'delete',
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     };
+    //     const response = await fetch(appointmentURL, fetchOptions);
+    //     if (response.ok) {
+    //     this.setState({
+    //         appointment: '',
+    //         status: '',
+    //         deleted: true,
+    //         updated: '',
+    //     });
+    // }
+    // }
 
 
     render () {

@@ -2,34 +2,29 @@ import React from 'react';
 
 
 class ServiceHistory extends React.Component {
-    constructor(props) {
-        super (props);
-        this.state = {
-            appointments: [],
-            input: '',
-            hasSubmit: false
-        }
-
-        this.handleChangeInput = this.handleChangeInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    state = {
+        appointments: [],
+        input: '',
+        hasSubmit: false
     }
 
-    handleChangeInput(event) {
-        const value = event.target.value;
+    handleChange = (e) => {
+        const value = e.target.value;
         this.setState({ input: value })
     }
 
-    async handleSubmit(event) {
-        event.preventDefault();
 
-        const url = 'http://localhost:8080/api/appointments/';
-        const response = await fetch(url);
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const appointmentURL = `http://localhost:8080/api/appointments/`;
+        const response = await fetch(appointmentURL);
         if (response.ok) {
             let results = await response.json();
 
-            var final = [];
+            let final = [];
             for (let appointment of results.appointments) {
-                if (appointment.vin_customer === this.state.input) {
+                if (appointment.vin_customer === this.state.input ) {
                     final.push(appointment)
                 }
             }
@@ -48,14 +43,11 @@ class ServiceHistory extends React.Component {
             defaultClasses = 'table table-striped'
         }
 
-        console.log(this.state.appointments)
-        // console.log({...this.state})
-
         return (
             <div className="container">
                 <h2>Service History</h2>
                 <div className="input-group mb-3">
-                    <input onChange={this.handleChangeInput} required type="text" name="input" id="input" className="form-control" placeholder="Search VIN" aria-describedby="button-addon2" />
+                    <input onChange={this.handleChange} required type="text" name="input" id="input" className="form-control" placeholder="Search VIN" aria-describedby="button-addon2" />
                     <button onClick={this.handleSubmit} className="btn btn-success" type="button" id="button-search">Button</button>
                 </div>
                 <div className="row">
