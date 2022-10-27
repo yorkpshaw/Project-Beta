@@ -1,4 +1,5 @@
 import React from 'react'
+import "./index.css"
 
 
 class AppointmentList extends React.Component {
@@ -22,11 +23,13 @@ class AppointmentList extends React.Component {
             if (response.ok) {
                 let data = await response.json();
 
+
                 this.setState({
                     appointments: data.appointments,
                     updated: false,
                 })
             }
+
         } catch (e) {
             console.error(e)
         }
@@ -36,7 +39,6 @@ class AppointmentList extends React.Component {
         event.preventDefault();
         const data = {...this.state}
         const id = event.target.value
-        console.log(event.target.value)
         delete data.appointments;
 
         const appointmentURL = `http://localhost:8080/api/appointments/${id}/`;
@@ -92,6 +94,7 @@ class AppointmentList extends React.Component {
                 <table className="table table-striped">
                 <thead>
                     <tr>
+                        <th>VIP</th>
                         <th>VIN</th>
                         <th>Customer Name</th>
                         <th>Date</th>
@@ -105,6 +108,7 @@ class AppointmentList extends React.Component {
                     {this.state.appointments.filter(function (appointment) { return appointment.status === false; }).map(appointment => {
                     return (
                         <tr key={ appointment.id }>
+                            <td>{ appointment.vip ? <div><img className="thumbnail" src='https://cdn-icons-png.flaticon.com/512/6701/6701725.png'/></div> : '' }</td>
                             <td>{ appointment.vin_customer }</td>
                             <td>{ appointment.owner }</td>
                             <td>{ appointment.date }</td>

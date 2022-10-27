@@ -135,8 +135,8 @@ class AppointmentForm extends React.Component {
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <textarea onChange={this.handleChangeReason} className="form-control" name="reason" id="reason" rows="2"></textarea>
                                 <label htmlFor="reason">Reason for visit</label>
+                                <textarea onChange={this.handleChangeReason} className="form-control" name="reason" id="reason" rows="2"></textarea>
                             </div>
                             <button className="btn btn-success">Make an appointment</button>
                         </form>

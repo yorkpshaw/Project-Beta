@@ -5,6 +5,9 @@ import AppointmentList from './AppointmentList';
 import TechnicianForm from './TechnicianForm';
 import AppointmentForm from './AppointmentForm';
 import ServiceHistory from './ServiceHistory';
+import CreateModel from './AddModel';
+import AutomobileList from './AutomobileList';
+import CreateAuto from './AddAuto';
 
 function App() {
   return (
@@ -13,6 +16,11 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="automobiles">
+            <Route index element={<AutomobileList />} />
+            <Route path="add/model" element={<CreateModel />} />
+            <Route path="add" element={<CreateAuto />} />
+          </Route>
           <Route path="service">
             <Route index element={<AppointmentForm />} />
             <Route path="list" element={<AppointmentList />} />
