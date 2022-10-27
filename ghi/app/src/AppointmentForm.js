@@ -48,11 +48,18 @@ class AppointmentForm extends React.Component {
         const response = await fetch(appointmentURL, fetchOptions)
         if (response.ok) {
             this.setState({
-                userInput: {},
-                technicians: [],
-                hasSubmit: true,
-            })
-        }
+                userInput: {
+                    owner: '',
+                    date: '',
+                    time: '',
+                    technician: '',
+                    vin_customer: '',
+                    reason: '',
+                },
+                    technicians: [],
+                    hasSubmit: true
+                })
+        };
     }
 
     render () {
@@ -70,23 +77,23 @@ class AppointmentForm extends React.Component {
                         <h1>Make an appointment</h1>
                         <form className={formClasses} onSubmit={this.handleSubmit} id="create-appointment-form">
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChange} placeholder="Name" required type="text" name="owner" id="owner" className="form-control" />
+                                <input onChange={this.handleChange} value={this.state.owner} placeholder="Name" required type="text" name="owner" id="owner" className="form-control" />
                                 <label htmlFor="owner">Your Name</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChange} placeholder="VIN" required type="text" name="vin_customer" id="vin_customer" className="form-control" />
+                                <input onChange={this.handleChange} value={this.state.vin_customer} placeholder="VIN" required type="text" name="vin_customer" id="vin_customer" className="form-control" />
                                 <label htmlFor="vin_customer">Car VIN</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChange} placeholder="Date" required type="date" name="date" id="date" className="form-control" />
+                                <input onChange={this.handleChange} value={this.state.date} placeholder="Date" required type="date" name="date" id="date" className="form-control" />
                                 <label htmlFor="date">Choose a date</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleChange} placeholder="Time" required type="time" name="time" id="time" className="form-control" />
+                                <input onChange={this.handleChange} value={this.state.time} placeholder="Time" required type="time" name="time" id="time" className="form-control" />
                                 <label htmlFor="time">Choose a time</label>
                             </div>
                             <div className="mb-3">
-                                <select onChange={this.handleChange} required name="technician" id="technician" className="form-select">
+                                <select onChange={this.handleChange} value={this.state.technician} required name="technician" id="technician" className="form-select">
                                     <option value="">Choose a technician</option>
                                     {this.state.technicians.map(technician => {
                                         return (
@@ -97,7 +104,7 @@ class AppointmentForm extends React.Component {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="reason">Reason for visit</label>
-                                <textarea onChange={this.handleChange} className="form-control" name="reason" id="reason" rows="2"></textarea>
+                                <textarea onChange={this.handleChange} value={this.state.reason} className="form-control" name="reason" id="reason" rows="2"></textarea>
                             </div>
                             <button className="btn btn-success">Make an appointment</button>
                         </form>

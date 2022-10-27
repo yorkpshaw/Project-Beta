@@ -106,10 +106,10 @@ def api_show_appointment(request, pk):
             content = json.loads(request.body)
             appointment = Appointment.objects.get(id=pk)
 
-            props = ["date", "reason", "status", "time"]
-            for prop in props:
-                if prop in content:
-                    setattr(appointment, prop, content[prop])
+            models = ["date", "reason", "status", "time"]
+            for model in models:
+                if model in content:
+                    setattr(appointment, model, content[model])
             appointment.save()
             return JsonResponse(
                 appointment,

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
-import Nav from './Nav';
+import Navs from './Nav';
 import AppointmentList from './AppointmentList';
 import TechnicianForm from './TechnicianForm';
 import AppointmentForm from './AppointmentForm';
@@ -12,7 +12,7 @@ import CreateAuto from './AddAuto';
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
+      <Navs />
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
