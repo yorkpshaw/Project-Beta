@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
 import MainPage from './MainPage';
 import Navs from './Nav';
 import AppointmentList from './AppointmentList';
@@ -8,6 +9,15 @@ import ServiceHistory from './ServiceHistory';
 import CreateModel from './AddModel';
 import AutomobileList from './AutomobileList';
 import CreateAuto from './AddAuto';
+// import SalesList from './SalesList';
+// import SalesPersonHistory from './SalesPersonHistory';
+// import NewCustomerForm from './NewCustomerForm';
+// import SaleRecordForm from './SaleRecordForm';
+// import NewSalesPersonForm from './NewSalesPersonForm';
+import SalesPerson from './SalesPerson';
+// import CreateManufacturer from './CreateManufacturers';
+// import ListManufacturers from './ListManufacturers';
+// import ListVehicleModels from './ListVehicleModels';
 
 function App() {
   return (
@@ -30,6 +40,15 @@ function App() {
             <Route index element={<TechnicianForm />} />
           </Route>
         </Routes>
+        {/* <SaleRecordForm /> */}
+        {/* <NewCustomerForm /> */}
+        {/* <NewSalesPersonForm /> */}
+        {/* <SalesList /> */}
+        {/* <SalesPersonHistory /> */}
+        <SalesPerson />
+        {/* <CreateManufacturer /> */}
+        {/* <ListManufacturers /> */}
+        {/* <ListVehicleModels /> */}
       </div>
     </BrowserRouter>
   );
