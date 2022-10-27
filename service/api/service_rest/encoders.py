@@ -14,7 +14,7 @@ class AutomobileVOListEncoder(ModelEncoder):
 
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
-    properties = ["id", "owner", "vin_customer", "date", "technician", "reason"]
+    properties = ["id", "owner", "vin_customer", "date", "time", "technician", "reason", "status"]
     encoders = {
         "technician": TechnicianListEncoder(),
     }
