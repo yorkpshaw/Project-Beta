@@ -55,7 +55,7 @@ class NewSalesPersonForm extends React.Component {
             if (this.state.hasSignedUp) {
               messageClasses = 'alert alert-success mb-0';
               formClasses = 'd-none';
-              setTimeout(() => window.location.replace(`http://localhost:3000/sales/salesperson`), 3000)
+              setTimeout(() => window.location.replace(`http://localhost:3000/sales/salesperson/`), 3000)
             }
         return (
             <div className="row">
@@ -65,16 +65,16 @@ class NewSalesPersonForm extends React.Component {
                         <form className={formClasses} onSubmit={this.handleSubmit} id="create-sale-form">
                             <div className="form-floating mb-3">
                                 <input value={this.state.salesperson_name} onChange={this.handleNameChange} placeholder="Salesperson Name" required type="text" name="salesperson_name" id="salesperson_name" className="form-control" />
-                                <label htmlFor="salesperson_name">Enter salesperson name</label>
+                                <label htmlFor="salesperson_name">Enter sales person name</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input value={this.state.employee_num} onChange={this.handleEmployeeNumChange} placeholder="Employee Num" required type="text" name="employee_num" id="employee_num" className="form-control" />
-                                <label htmlFor="employee_num">Enter employee number</label>
+                                <label htmlFor="employee_num">Enter sale person number</label>
                             </div>
                             <button className="btn btn-primary">Create</button>
                         </form>
                         <div className={messageClasses} id="success-message">
-                  New Employee Recorded!
+                  New Sales Person Recorded!
                   </div>
                     </div>
                 </div>
