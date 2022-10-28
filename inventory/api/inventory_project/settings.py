@@ -55,14 +55,10 @@ ALLOWED_HOSTS = [
     "inventory-api",
     "service-api",
     "sales-api",
-    "sales-api",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
-    "http://localhost:8080",
-    "http://localhost:8100",
-    "http://localhost:8090",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -70,7 +66,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://localhost:8100",
     "http://localhost:8090",
-    "http://localhost:8100",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

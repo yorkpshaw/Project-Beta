@@ -9,15 +9,14 @@ import ServiceHistory from './ServiceHistory';
 import CreateModel from './AddModel';
 import AutomobileList from './AutomobileList';
 import CreateAuto from './AddAuto';
-// import SalesList from './SalesList';
-// import SalesPersonHistory from './SalesPersonHistory';
-// import NewCustomerForm from './NewCustomerForm';
-// import SaleRecordForm from './SaleRecordForm';
-// import NewSalesPersonForm from './NewSalesPersonForm';
+import SalesList from './SalesList';
+import NewCustomerForm from './NewCustomerForm';
+import SaleRecordForm from './SaleRecordForm';
+import NewSalesPersonForm from './NewSalesPersonForm';
+import CreateManufacturer from './CreateManufacturers';
+import ListManufacturers from './ListManufacturers';
+import ListVehicleModels from './ListVehicleModels';
 import SalesPerson from './SalesPerson';
-// import CreateManufacturer from './CreateManufacturers';
-// import ListManufacturers from './ListManufacturers';
-// import ListVehicleModels from './ListVehicleModels';
 
 function App() {
   return (
@@ -26,10 +25,13 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="automobiles">
+          <Route path="autos">
             <Route index element={<AutomobileList />} />
-            <Route path="add/model" element={<CreateModel />} />
             <Route path="add" element={<CreateAuto />} />
+            <Route path="add/manufacturer" element={<CreateManufacturer />} />
+            <Route path="add/model" element={<CreateModel />} />
+            <Route path="list/models" element={<ListVehicleModels />} />
+            <Route path="list/manufacturers" element={<ListManufacturers />} />
           </Route>
           <Route path="service">
             <Route index element={<AppointmentForm />} />
@@ -39,16 +41,16 @@ function App() {
           <Route path="technician">
             <Route index element={<TechnicianForm />} />
           </Route>
+          <Route path="sales">
+            <Route index element={<SalesList />} />.
+            <Route path="add" element={<SaleRecordForm />} />
+            <Route path="salesperson" element={<SalesPerson />} />
+            <Route path="salesperson/new" element={<NewSalesPersonForm />} />
+            <Route path="customer" element={<NewCustomerForm />} />
+          </Route>
         </Routes>
-        {/* <SaleRecordForm /> */}
-        {/* <NewCustomerForm /> */}
-        {/* <NewSalesPersonForm /> */}
-        {/* <SalesList /> */}
-        {/* <SalesPersonHistory /> */}
-        <SalesPerson />
-        {/* <CreateManufacturer /> */}
-        {/* <ListManufacturers /> */}
-        {/* <ListVehicleModels /> */}
+
+
       </div>
     </BrowserRouter>
   );

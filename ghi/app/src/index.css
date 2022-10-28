@@ -24,8 +24,8 @@ tr:hover {
 .thumbnail {
   width: 40px;
   height: 38px;
-  display: inline-block; /* makes it fit in like an <img> */
-  background-size: cover; /* or contain */
+  display: inline-block;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
