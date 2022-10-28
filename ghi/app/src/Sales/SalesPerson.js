@@ -1,5 +1,5 @@
 import React from 'react'
-import "./index.css"
+import "../index.css"
 
 class SalesPerson extends React.Component {
   constructor(props) {
