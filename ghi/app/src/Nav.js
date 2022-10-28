@@ -1,6 +1,8 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+
 
 function Nav() {
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
@@ -11,11 +13,15 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item dropdown">
-              <NavLink className="nav-link dropdown-toggle" to="/automobiles" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Vehicles</NavLink>
+              <NavLink className="nav-link dropdown-toggle" to="/autos" id="navbarDropdown" role="button" aria-labelledby="navbarDropdownMenuLink" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Vehicles</NavLink>
               <ul className="dropdown-menu" aria-labelledby='navbarDropdown' data-bs-auto-close="true">
-                <li><NavLink className="dropdown-item" to="/automobiles">View vehicles</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/automobiles/add">Add a new vehicle</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/automobiles/add/model">Add a new model</NavLink> </li>
+                <li><NavLink className="dropdown-item" to="/autos">View vehicles</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/autos/list/models">View models</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/autos/list/manufacturers">View manufacturers</NavLink></li>
+                <div className="dropdown-divider"></div>
+                <li><NavLink className="dropdown-item" to="/autos/add">Add new vehicle</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/autos/add/model">Add new model</NavLink> </li>
+                <li><NavLink className="dropdown-item" to="/autos/add/manufacturer">Add new manufacturer</NavLink></li>
               </ul>
             </li>
             <li className="nav-item dropdown">
@@ -29,14 +35,26 @@ function Nav() {
                 <li className="nav-item dropdown">
                   <NavLink className="nav-link dropdown-toggle" to="/technician" id="navbarSecondDrop" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Technician</NavLink>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdown" data-bs-auto-close="true">
-                    <li><NavLink className="dropdown-item" to="/technician">Enter a new technician</NavLink></li>
+                    <li><NavLink className="dropdown-item" to="/technician">Enter new technician</NavLink></li>
                   </ul>
                 </li>
+                <li className="nav-item dropdown">
+              <NavLink className="nav-link dropdown-toggle" to="/sales" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">Sales</NavLink>
+              <ul className="dropdown-menu" aria-labelledby='navbarDropdown' data-bs-auto-close="true">
+              <li><NavLink className="dropdown-item" to="/sales">View sales list</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/sales/add">Add salesrecord</NavLink></li>
+                <div className="dropdown-divider"></div>
+                <li><NavLink className="dropdown-item" to="/sales/salesperson">View sales by salesperson</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/sales/salesperson/new">Enter new salesperson</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/sales/customer">Enter new customer</NavLink></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
   )
+
 }
 
 export default Nav;
