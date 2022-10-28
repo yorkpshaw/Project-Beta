@@ -10,7 +10,6 @@ import CreateModel from './AddModel';
 import AutomobileList from './AutomobileList';
 import CreateAuto from './AddAuto';
 // import SalesList from './SalesList';
-// import SalesPersonHistory from './SalesPersonHistory';
 // import NewCustomerForm from './NewCustomerForm';
 // import SaleRecordForm from './SaleRecordForm';
 // import NewSalesPersonForm from './NewSalesPersonForm';
