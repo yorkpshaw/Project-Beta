@@ -49,6 +49,8 @@ function App() {
             <Route path="customer" element={<NewCustomerForm />} />
           </Route>
         </Routes>
+
+
       </div>
     </BrowserRouter>
   );
