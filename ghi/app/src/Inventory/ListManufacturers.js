@@ -1,7 +1,8 @@
 import React from 'react'
 import "../index.css"
 
-class ListVehicleModels extends React.Component {
+
+class ListManufacturers extends React.Component {
   constructor(props) {
       super(props)
       this.state = {
@@ -21,6 +22,7 @@ async componentDidMount() {
     render(){
 
     return (
+
       <div>
         <h1>Manufacturers</h1>
       <table className='table table-striped'>
@@ -43,4 +45,6 @@ async componentDidMount() {
     )
 }
 }
-export default ListVehicleModels;
+
+
+export default ListManufacturers;

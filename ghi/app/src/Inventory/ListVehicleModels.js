@@ -21,6 +21,7 @@ async componentDidMount() {
     render(){
 
     return (
+
       <div>
         <h1>Vehicle models</h1>
       <table className='table table-striped'>
@@ -47,4 +48,6 @@ async componentDidMount() {
     )
 }
 }
+
+
 export default ListVehicleModels;

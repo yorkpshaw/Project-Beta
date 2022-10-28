@@ -18,6 +18,9 @@ import ListManufacturers from './Inventory/ListManufacturers';
 import ListVehicleModels from './Inventory/ListVehicleModels';
 import SalesPerson from './Sales/SalesPerson';
 
+
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,10 +31,10 @@ function App() {
           <Route path="autos">
             <Route index element={<AutomobileList />} />
             <Route path="add" element={<CreateAuto />} />
-            <Route path="add/manufacturer" element={<CreateManufacturer />} />
-            <Route path="add/model" element={<CreateModel />} />
-            <Route path="list/models" element={<ListVehicleModels />} />
-            <Route path="list/manufacturers" element={<ListManufacturers />} />
+            <Route path="manufacturers/add" element={<CreateManufacturer />} />
+            <Route path="models/add" element={<CreateModel />} />
+            <Route path="models" element={<ListVehicleModels />} />
+            <Route path="manufacturers" element={<ListManufacturers />} />
           </Route>
           <Route path="service">
             <Route index element={<AppointmentForm />} />

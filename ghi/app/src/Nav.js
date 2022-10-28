@@ -16,12 +16,12 @@ function Nav() {
           <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="@" role="button" aria-expanded="true">Vehicles</a>
               <ul className="dropdown-menu" aria-labelledby='navbarDropdown' data-bs-auto-close="true">
                 <li><NavLink className="dropdown-item" to="/autos">View vehicles</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/autos/list/models">View models</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/autos/list/manufacturers">View manufacturers</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/autos/models">View models</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/autos/manufacturers">View manufacturers</NavLink></li>
                 <div className="dropdown-divider"></div>
                 <li><NavLink className="dropdown-item" to="/autos/add">Add new vehicle</NavLink></li>
-                <li><NavLink className="dropdown-item" to="/autos/add/model">Add new model</NavLink> </li>
-                <li><NavLink className="dropdown-item" to="/autos/add/manufacturer">Add new manufacturer</NavLink></li>
+                <li><NavLink className="dropdown-item" to="/autos/models/add">Add new model</NavLink> </li>
+                <li><NavLink className="dropdown-item" to="/autos/manufacturers/add">Add new manufacturer</NavLink></li>
               </ul>
             </li>
             <li className="nav-item" dropdown="true">

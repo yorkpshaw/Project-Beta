@@ -16,6 +16,7 @@ class AutomobileList extends React.Component {
     }
 
     render () {
+
         return (
             <div className="container">
                 <h2>Vehicle Inventory</h2>
@@ -48,5 +49,6 @@ class AutomobileList extends React.Component {
         )
     }
 }
+
 
 export default AutomobileList;
