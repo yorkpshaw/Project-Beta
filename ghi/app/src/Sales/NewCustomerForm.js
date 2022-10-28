@@ -63,7 +63,7 @@ class NewCustomerForm extends React.Component {
             if (this.state.hasSignedUp) {
               messageClasses = 'alert alert-success mb-0';
               formClasses = 'd-none';
-              setTimeout(() => window.location.replace(`http://localhost:3000/customers`), 3000)
+              setTimeout(() => window.location.replace(`http://localhost:3000/sales/customer`), 3000)
             }
         return (
             <div className="row">
@@ -85,9 +85,9 @@ class NewCustomerForm extends React.Component {
                             </div>
                             <button className="btn btn-primary">Create</button>
                         </form>
-                        <div className={messageClasses} id="success-message">
+                    <div className={messageClasses} id="success-message">
                   New Customer Recorded!
-                  </div>
+                    </div>
                     </div>
                 </div>
             </div>

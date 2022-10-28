@@ -2,21 +2,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import MainPage from './MainPage';
 import Navs from './Nav';
-import AppointmentList from './AppointmentList';
-import TechnicianForm from './TechnicianForm';
-import AppointmentForm from './AppointmentForm';
-import ServiceHistory from './ServiceHistory';
-import CreateModel from './AddModel';
-import AutomobileList from './AutomobileList';
-import CreateAuto from './AddAuto';
-import SalesList from './SalesList';
-import NewCustomerForm from './NewCustomerForm';
-import SaleRecordForm from './SaleRecordForm';
-import NewSalesPersonForm from './NewSalesPersonForm';
-import CreateManufacturer from './CreateManufacturers';
-import ListManufacturers from './ListManufacturers';
-import ListVehicleModels from './ListVehicleModels';
-import SalesPerson from './SalesPerson';
+import AppointmentList from './Services/AppointmentList';
+import TechnicianForm from './Services/TechnicianForm';
+import AppointmentForm from './Services/AppointmentForm';
+import ServiceHistory from './Services/ServiceHistory';
+import CreateModel from './Inventory/AddModel';
+import AutomobileList from './Inventory/AutomobileList';
+import CreateAuto from './Inventory/AddAuto';
+import SalesList from './Sales/SalesList';
+import NewCustomerForm from './Sales/NewCustomerForm';
+import SaleRecordForm from './Sales/SaleRecordForm';
+import NewSalesPersonForm from './Sales/NewSalesPersonForm';
+import CreateManufacturer from './Inventory/CreateManufacturers';
+import ListManufacturers from './Inventory/ListManufacturers';
+import ListVehicleModels from './Inventory/ListVehicleModels';
+import SalesPerson from './Sales/SalesPerson';
 
 function App() {
   return (
@@ -49,8 +49,6 @@ function App() {
             <Route path="customer" element={<NewCustomerForm />} />
           </Route>
         </Routes>
-
-
       </div>
     </BrowserRouter>
   );

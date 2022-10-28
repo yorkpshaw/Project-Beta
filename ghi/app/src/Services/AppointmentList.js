@@ -1,5 +1,5 @@
 import React from 'react'
-import "./index.css"
+import "../index.css"
 
 
 class AppointmentList extends React.Component {
@@ -66,7 +66,6 @@ class AppointmentList extends React.Component {
     }
 
     render () {
-
         return (
             <div className="container">
                 <h2>Service Appointments</h2>

@@ -55,17 +55,17 @@ class NewSalesPersonForm extends React.Component {
             if (this.state.hasSignedUp) {
               messageClasses = 'alert alert-success mb-0';
               formClasses = 'd-none';
-              setTimeout(() => window.location.replace(`http://localhost:3000/salespeople`), 3000)
+              setTimeout(() => window.location.replace(`http://localhost:3000/sales/salesperson`), 3000)
             }
         return (
             <div className="row">
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
-                        <h1>Add a new employee</h1>
+                        <h1>Add a new sales person</h1>
                         <form className={formClasses} onSubmit={this.handleSubmit} id="create-sale-form">
                             <div className="form-floating mb-3">
                                 <input value={this.state.salesperson_name} onChange={this.handleNameChange} placeholder="Salesperson Name" required type="text" name="salesperson_name" id="salesperson_name" className="form-control" />
-                                <label htmlFor="salesperson_name">Enter employee name</label>
+                                <label htmlFor="salesperson_name">Enter salesperson name</label>
                             </div>
                             <div className="form-floating mb-3">
                                 <input value={this.state.employee_num} onChange={this.handleEmployeeNumChange} placeholder="Employee Num" required type="text" name="employee_num" id="employee_num" className="form-control" />
