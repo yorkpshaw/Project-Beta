@@ -148,12 +148,3 @@ def api_list_sales(request):
             encoder=SalesRecordDetailEncoder,
             safe=False,
         )
-
-# @require_http_methods(["DELETE"])
-# def api_delete_sales(request, pk):
-#     try:
-#         salesrecord = SalesRecord.objects.get(id=pk)
-#         salesrecord.delete()
-#         return JsonResponse({"message": "Sales record has been deleted."})
-#     except SalesRecord:
-#         return JsonResponse({"message": "Does not exist."})

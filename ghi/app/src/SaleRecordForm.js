@@ -93,7 +93,6 @@ class SaleRecordForm extends React.Component {
         const autoResponse = await fetch(autoUrl);
         if (autoResponse.ok) {
             const data = await autoResponse.json();
-            console.log(data)
 
             this.setState({ autos: data.autos });
         }
@@ -116,13 +115,13 @@ class SaleRecordForm extends React.Component {
     }
 
     render() {
-            let messageClasses = 'alert alert-success d-none mb-0';
-            let formClasses = '';
-            if (this.state.hasSignedUp) {
-              messageClasses = 'alert alert-success mb-0';
-              formClasses = 'd-none';
-              setTimeout(() => window.location.replace(`http://localhost:3000/salesrecords`), 3000)
-            }
+        let messageClasses = 'alert alert-success d-none mb-0';
+        let formClasses = '';
+        if (this.state.hasSignedUp) {
+            messageClasses = 'alert alert-success mb-0';
+            formClasses = 'd-none';
+            setTimeout(() => window.location.replace(`http://localhost:3000/sales`), 3000)
+        }
         return (
         <div className="row">
             <div className="offset-3 col-6">
@@ -173,10 +172,10 @@ class SaleRecordForm extends React.Component {
                 </form>
                 <div className={messageClasses} id="success-message">
                   New $$$ale Recorded!
-                  </div>
-                    </div>
                 </div>
             </div>
+            </div>
+        </div>
         );
     }
 }
