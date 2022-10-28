@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     sold = models.BooleanField(default=False, null=True)
@@ -14,7 +13,7 @@ class SalesPerson(models.Model):
     employee_num = models.PositiveSmallIntegerField(unique=True)
 
     def __str__(self):
-        return self.sales_person
+        return self.salesperson_name
 
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100)
