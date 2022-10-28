@@ -8,7 +8,8 @@ class CreateModel extends React.Component {
             picture_url: '',
             manufacturer_id: '',
         },
-        manufacturers: []
+        manufacturers: [],
+        hasSubmit: false,
     }
 
     componentDidMount = async () => {
@@ -43,17 +44,33 @@ class CreateModel extends React.Component {
 
         const response = await fetch(modelURL, fetchOptions)
         if (response.ok) {
-            this.setState({})
+            this.setState({
+                userInput: {
+                    name: '',
+                    picture_url: '',
+                    manufacturer_id: '',
+                },
+                manufacturers: [],
+                hasSubmit: true
+            })
         }
     }
 
     render () {
+
+        let successAlert = 'alert alert-success d-none mb-0';
+        let formClass = '';
+        if (this.state.hasSubmit) {
+            successAlert = 'alert alert-success mb-0';
+            formClass = 'd-none';
+        }
+
         return (
             <div className="row">
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h2>Create a vehicle model</h2>
-                        <form className='form' onSubmit={this.handleSubmit} id="create-model-form">
+                        <form className={formClass} onSubmit={this.handleSubmit} id="create-model-form">
                             <div className="form-floating mb-3">
                                 <input onChange={this.handleChange} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
                                 <label htmlFor="name">Model Name</label>
@@ -74,6 +91,9 @@ class CreateModel extends React.Component {
                             </div>
                             <button className="btn btn-success">Create a vehicle model</button>
                         </form>
+                        <div className={successAlert} id="success-message">
+                            Sucessfully added a new model
+                        </div>
                     </div>
                 </div>
             </div>

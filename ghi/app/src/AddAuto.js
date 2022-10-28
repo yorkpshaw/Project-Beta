@@ -10,6 +10,7 @@ class CreateAuto extends React.Component {
             model_id: '',
         },
         models: [],
+        hasSubmit: false
     }
 
     componentDidMount = async () => {
@@ -44,17 +45,34 @@ class CreateAuto extends React.Component {
 
         const response = await fetch(autoURL, fetchOptions)
         if (response.ok) {
-            this.setState({})
+            this.setState({
+                userInput: {
+                    color: '',
+                    year: '',
+                    vin: '',
+                    model_id: '',
+                },
+                models: [],
+                hasSubmit: true
+            })
         }
     }
 
     render () {
+
+        let successAlert = 'alert alert-success d-none mb-0';
+        let formClass = '';
+        if (this.state.hasSubmit) {
+            successAlert = 'alert alert-success mb-0';
+            formClass = 'd-none';
+        }
+
         return (
             <div className="row">
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h2>Add a vehicle to inventory</h2>
-                        <form className='form' onSubmit={this.handleSubmit} id="create-auto-form">
+                        <form className={formClass} onSubmit={this.handleSubmit} id="create-auto-form">
                             <div className="form-floating mb-3">
                                 <input onChange={this.handleChange} placeholder="Color" required type="text" name="color" id="color" className="form-control" />
                                 <label htmlFor="color">Color</label>
@@ -79,6 +97,9 @@ class CreateAuto extends React.Component {
                             </div>
                             <button className="btn btn-success">Add a vehicle to inventory</button>
                         </form>
+                        <div className={successAlert} id="success-message">
+                            Successfully added a new automobile
+                        </div>
                     </div>
                 </div>
             </div>

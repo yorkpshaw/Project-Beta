@@ -63,11 +63,11 @@ class AppointmentForm extends React.Component {
     }
 
     render () {
-        let messageClasses = 'alert alert-success d-none mb-0';
-        let formClasses = '';
+        let successAlert = 'alert alert-success d-none mb-0';
+        let formClass = '';
         if (this.state.hasSubmit) {
-            messageClasses = 'alert alert-success mb-0';
-            formClasses = 'd-none';
+            successAlert = 'alert alert-success mb-0';
+            formClass = 'd-none';
         }
 
         return (
@@ -75,7 +75,7 @@ class AppointmentForm extends React.Component {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Make an appointment</h1>
-                        <form className={formClasses} onSubmit={this.handleSubmit} id="create-appointment-form">
+                        <form className={formClass} onSubmit={this.handleSubmit} id="create-appointment-form">
                             <div className="form-floating mb-3">
                                 <input onChange={this.handleChange} value={this.state.owner} placeholder="Name" required type="text" name="owner" id="owner" className="form-control" />
                                 <label htmlFor="owner">Your Name</label>
@@ -108,7 +108,7 @@ class AppointmentForm extends React.Component {
                             </div>
                             <button className="btn btn-success">Make an appointment</button>
                         </form>
-                        <div className={messageClasses} id="success-message">
+                        <div className={successAlert} id="success-message">
                             You have successfully made an appointment
                         </div>
                     </div>

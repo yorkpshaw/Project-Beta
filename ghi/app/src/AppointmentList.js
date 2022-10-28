@@ -63,35 +63,7 @@ class AppointmentList extends React.Component {
             })
             this.componentDidMount();
         }
-
-
     }
-
-    // async handleDelete(event) {
-    //     event.preventDefault();
-    //     const data = {...this.state}
-    //     const id = event.target.value;
-    //     delete data.appointments;
-
-    //     const appointmentURL = `http://localhost:8080/api/appointments/${id}/`;
-    //     const fetchOptions = {
-    //         method: 'delete',
-    //         body: JSON.stringify(data),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //     };
-    //     const response = await fetch(appointmentURL, fetchOptions);
-    //     if (response.ok) {
-    //     this.setState({
-    //         appointment: '',
-    //         status: '',
-    //         deleted: true,
-    //         updated: '',
-    //     });
-    // }
-    // }
-
 
     render () {
 

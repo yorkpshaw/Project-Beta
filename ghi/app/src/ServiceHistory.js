@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaSearchPlus } from 'react-icons/fa';
 
 
 class ServiceHistory extends React.Component {
@@ -49,7 +48,7 @@ class ServiceHistory extends React.Component {
                 <h2>Service History</h2>
                 <div className="input-group mb-3">
                     <input onChange={this.handleChange} required type="text" name="input" id="input" className="form-control" placeholder="Search VIN" aria-describedby="button-addon2" />
-                    <button onClick={this.handleSubmit} className="btn btn-success" type="button" id="button-search"><FaSearchPlus /></button>
+                    <button onClick={this.handleSubmit} className="btn btn-success" type="button" id="button-search">Search</button>
                 </div>
                 <div className="row">
                     <table className={defaultClasses}>
