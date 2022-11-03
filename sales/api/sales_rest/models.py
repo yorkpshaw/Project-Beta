@@ -10,7 +10,7 @@ class AutomobileVO(models.Model):
 
 class SalesPerson(models.Model):
     salesperson_name = models.CharField(max_length=100)
-    employee_num = models.PositiveSmallIntegerField(unique=True)
+    employee_num = models.PositiveBigIntegerField(unique=True)
 
     def __str__(self):
         return self.salesperson_name
@@ -28,7 +28,7 @@ class SalesRecord(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="salesrecords",
-        on_delete = models.PROTECT
+        on_delete = models.PROTECT,
     )
 
     salesperson = models.ForeignKey(

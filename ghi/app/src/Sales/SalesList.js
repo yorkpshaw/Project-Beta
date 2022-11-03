@@ -19,11 +19,10 @@ async componentDidMount() {
     }
 }
     render(){
-
     return (
       <div>
         <h1>List of Sales</h1>
-      <table className='table table-striped'>
+      <table className='table table-striped table-dark'>
         <thead>
           <tr>
             <th>Employee Name</th>

@@ -111,7 +111,7 @@ def api_show_salesperson(request, pk):
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
     if request.method == "GET":
-        salesrecords = SalesRecord.objects.all()
+        salesrecords = SalesRecord.objects.all().order_by('salesperson_id', 'salesperson_id')
         return JsonResponse(
             {"salesrecords": salesrecords},
             encoder=SalesRecordListEncoder

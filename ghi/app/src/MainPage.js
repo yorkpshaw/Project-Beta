@@ -1,12 +1,11 @@
+import styles from "./styles";
+
 function MainPage() {
   return (
-    <div className="px-4 py-5 my-5 text-center">
-      <h1 className="display-5 fw-bold">CarCar</h1>
-      <div className="col-lg-6 mx-auto">
-        <p className="lead mb-4">
-          The premiere solution for automobile dealership
-          management!
-        </p>
+    <div className="frontpage text-center">
+      <h1 className="title">ELECTRICAR</h1>
+      <div className="frontpage text-center">
+        <p className="secondarytitle lead mb-4">Insert Corny Slogan That Marketing Will Figure Out</p>
       </div>
     </div>
   );

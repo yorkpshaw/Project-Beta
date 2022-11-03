@@ -25,7 +25,7 @@ async componentDidMount() {
 
       <div>
         <h1>Manufacturers</h1>
-      <table className='table table-striped'>
+      <table className='table table-striped table-dark'>
         <thead>
           <tr>
             <th>Name</th>

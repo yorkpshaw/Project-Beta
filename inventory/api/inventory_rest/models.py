@@ -8,6 +8,10 @@ class Manufacturer(models.Model):
     def get_api_url(self):
         return reverse("api_manufacturer", kwargs={"pk": self.id})
 
+    class Meta:
+        ordering = ["name"]
+
+
 class VehicleModel(models.Model):
     name = models.CharField(max_length=100)
     picture_url = models.URLField()
@@ -20,6 +24,9 @@ class VehicleModel(models.Model):
 
     def get_api_url(self):
         return reverse("api_vehicle_model", kwargs={"pk": self.id})
+
+    class Meta:
+        ordering = ["manufacturer"]
 
 class Automobile(models.Model):
     color = models.CharField(max_length=50)

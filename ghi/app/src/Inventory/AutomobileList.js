@@ -16,12 +16,11 @@ class AutomobileList extends React.Component {
     }
 
     render () {
-
         return (
             <div className="container">
                 <h2>Vehicle Inventory</h2>
                 <div className="row"></div>
-                <table className="table table-striped">
+                <table id="autolist" className="table table-striped table-dark">
                     <thead>
                         <tr>
                         <th>VIN</th>

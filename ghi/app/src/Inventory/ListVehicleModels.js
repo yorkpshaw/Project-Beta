@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import "../index.css"
 
 class ListVehicleModels extends React.Component {
@@ -18,13 +18,12 @@ async componentDidMount() {
         this.setState({ models: data.models });
     }
 }
+
     render(){
-
     return (
-
       <div>
         <h1>Vehicle models</h1>
-      <table className='table table-striped'>
+      <table className='table table-striped table-dark'>
         <thead>
           <tr>
             <th>Name</th>

@@ -17,8 +17,9 @@ import CreateManufacturer from './Inventory/CreateManufacturers';
 import ListManufacturers from './Inventory/ListManufacturers';
 import ListVehicleModels from './Inventory/ListVehicleModels';
 import SalesPerson from './Sales/SalesPerson';
-
-
+import Audi from './ManufacturerPages/Audi';
+import BMW from './ManufacturerPages/BMW';
+import Benz from './ManufacturerPages/Benz';
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="audi" element={<Audi />} />
+          <Route path="bmw" element={<BMW />} />
+          <Route path="benz" element={<Benz />} />
           <Route path="autos">
             <Route index element={<AutomobileList />} />
             <Route path="add" element={<CreateAuto />} />

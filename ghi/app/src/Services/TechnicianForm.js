@@ -46,8 +46,8 @@ class TechnicianForm extends React.Component {
         if (this.state.hasSubmit) {
             messageClasses = 'alert alert-success mb-0';
             formClasses = 'd-none';
-        }
-
+            setTimeout(() => window.location.replace(`http://localhost:3000/technician`), 3000)
+            }
         return (
             <div className = "row">
                 <div className="offset-3 col-6">

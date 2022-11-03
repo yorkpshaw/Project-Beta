@@ -50,9 +50,9 @@ handleInput(event) {
 }
 
     render(){
-      let messageClasses = 'table table-striped d-none';
+      let messageClasses = 'table table-striped table-dark d-none';
       if (this.state.hasSignedUp) {
-        messageClasses = 'table table-striped mb-0';}
+        messageClasses = 'table table-striped table-dark mb-0';}
     return (
       <div className="container">
         <h1>Sales person History</h1>

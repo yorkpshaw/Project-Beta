@@ -120,7 +120,7 @@ class SaleRecordForm extends React.Component {
         if (this.state.hasSignedUp) {
             messageClasses = 'alert alert-success mb-0';
             formClasses = 'd-none';
-            setTimeout(() => window.location.replace(`http://localhost:3000/sales`), 3000)
+            setTimeout(() => window.location.replace(`http://localhost:3000/sales/add`), 3000)
         }
         return (
         <div className="row">

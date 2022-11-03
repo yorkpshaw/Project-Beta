@@ -63,8 +63,8 @@ class CreateModel extends React.Component {
         if (this.state.hasSubmit) {
             successAlert = 'alert alert-success mb-0';
             formClass = 'd-none';
+            setTimeout(() => window.location.replace(`http://localhost:3000/autos/models/add`), 3000)
         }
-
         return (
             <div className="row">
                 <div className="offset-3 col-6">
