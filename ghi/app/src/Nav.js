@@ -3,6 +3,7 @@ import "./index.css"
 
 function Nav() {
   return (
+
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
         <NavLink className="navbar-brand col-md-4" to="/">Electricar</NavLink>

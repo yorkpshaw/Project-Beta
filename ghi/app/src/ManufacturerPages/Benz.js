@@ -5,7 +5,9 @@ class Benz extends React.Component {
 
 render() {
     return (
-        <h1 className="manufacturerheader">BENZ PAGE</h1>
+        <div><img className="mainlogo" src="https://www.car-brand-names.com/wp-content/uploads/2015/05/Mercedes-Benz-logo.png"></img>
+        <h1 className="benzslogan">The Best or Nothing.</h1>
+        </div>
     )
 }
 }

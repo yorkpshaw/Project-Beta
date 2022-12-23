@@ -5,7 +5,9 @@ class Audi extends React.Component {
 
 render() {
     return (
-        <h1 className="manufacturerheader">If you see this something worked!</h1>
+        <div><img className="mainlogo" src="https://i.pinimg.com/originals/a8/6a/f6/a86af66a009ffec24f021909e9eeb436.png"></img>
+        <h1 className="audislogan">Vorsprung durch Technik</h1>
+        </div>
     )
 }
 }
